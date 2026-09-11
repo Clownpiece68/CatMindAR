@@ -9,6 +9,7 @@
 	      <!-- JAVA SHIT -->
     <script>
       document.addEventListener("DOMContentLoaded", function() {
+		showModel();
 	    const sceneEl = document.querySelector('a-scene');
 	    let arSystem;
 	  sceneEl.addEventListener('loaded', function () {
@@ -16,15 +17,46 @@
       });
 		  
 	  const startButton = document.querySelector("#start-button");
+	  const mainUI = document.querySelector("#main-ui");
+	  const nextButton = document.querySelector("#next-button");
+	  const previousButton = document.querySelector("#previous-button");
+		  
+		  
 	  const oiioiiModel = document.querySelector("#oiioiiModel");
 	  const maxwellModel = document.querySelector("#maxwellModel");
 
 	  startButton.addEventListener('click', () => {
 	      arSystem.start();
 		  startButton.style.display = 'none';
-		  console.log("Botoncito picado uwu");
+		  mainUI.style.display = 'block';
+		  console.log("Start iniciado");
+
+	  nextButton.addEventListener('click', () => {
+		  console.log(currentCat);
+
+	  previousButton.addEventListener('click', () => {
+		  console.log(currentCat);
 	  });
+
+	
+    // MAGIA NEGRA QUE HACE QUE CAMBIEN LOS GATITOS
+	let currentCat = 0;
+    const cats = [
+        oiioiiModel,
+        maxwellModel
+	    ];
+
+	showModel(){
+		for (let cat of cats) {
+            cat.setAttribute("visible", false);
+        }
+		cats[currentCat].setAttribute("visible", true);
+	}
+		  
 	});
+
+	
+	
     </script>
 
 	  
@@ -34,6 +66,10 @@
         font-family: "bodyFont";
         src: url("./AustieBostKittenKlub.ttf");
     }
+
+	#main-ui {
+        display: none;
+        }
 		
 	#start-button {
 		position: absolute;
@@ -52,9 +88,15 @@
   <body>
 
     <!-- UI -->
-    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000;">
+    <div id="start-ui" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000;">
         <button id="start-button">Start</button>
     </div>
+
+	  
+    <div id="main-ui" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000;">
+			<button id="next-button">Start</button>
+		    <button id="previous-button">Start</button>
+	</div>
 
     <!-- AR STUFF -->
     <a-scene mindar-image="imageTargetSrc: ./Oiiaii.mind; autoStart: false; maxTrack: 2" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" >
@@ -74,7 +116,7 @@
       
       <a-entity mindar-image-target="targetIndex: 1">
           <a-gltf-model rotation="0 -60 0 " position="0 -0.40 0" scale="0.035 0.035 0.035" src="#maxwellAsset" id="maxwellModel" 
-            animation__spin="property: rotation; to: 25 -60 0; from: -25 -80 0; dur: 700; easing: easeInOutQuad; loop: true; dir: alternate" >
+            animation__spin="property: rotation; to: 25 -60 0; from: -25 -80 0; dur: 500; easing: easeInOutQuad; loop: true; dir: alternate" >
           </a-gltf-model>
       </a-entity>  
     </a-scene>
@@ -83,6 +125,6 @@
 </html>
 
 <!-- Si sale esto es que ya se actualizo ¯\_(ツ)_/¯ -->
-<!-- # de veces actualizado: 41 -->
+<!-- # de veces actualizado: 43 -->
 
 <!-- Abner-Sama! <3/ -->
