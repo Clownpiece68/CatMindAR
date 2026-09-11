@@ -16,6 +16,8 @@
       });
 		  
 	  const startButton = document.querySelector("#start-button");
+	  const oiioiiModel = document.querySelector("#oiioiiModel");
+	  const maxwellModel = document.querySelector("#maxwellModel");
 
 	  startButton.addEventListener('click', () => {
 	      arSystem.start();
@@ -57,21 +59,21 @@
     <!-- AR STUFF -->
     <a-scene mindar-image="imageTargetSrc: ./Oiiaii.mind; autoStart: false; maxTrack: 2" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" >
       <a-assets>
-        <a-asset-item id="oiioiiModel" src="./Oiiiaii_Cat.gltf"></a-asset-item>
-        <a-asset-item id="maxwellModel" src="./Maxwell.gltf"></a-asset-item>
+        <a-asset-item id="oiioiiAsset" src="./Oiiiaii_Cat.gltf"></a-asset-item>
+        <a-asset-item id="maxwellAsset" src="./Maxwell.gltf"></a-asset-item>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
       <a-entity mindar-image-target="targetIndex: 0">
-          <a-gltf-model rotation="0 0 0 " position="0 -0.25 0" scale="0.02 0.02 0.02" src="#oiioiiModel" 
+          <a-gltf-model rotation="0 0 0 " position="0 -0.25 0" scale="0.02 0.02 0.02" src="#oiioiiAsset" id="oiioiiModel" 
             animation__spin="property: rotation; to: 0 360 0; dur: 500; easing: linear; loop: true" 
             animation__position="property: position; to: 0 0.25 0; dur: 500; easing: easeInOutQuad; loop: true; dir: alternate">
           </a-gltf-model>
       </a-entity>
       
       <a-entity mindar-image-target="targetIndex: 1">
-          <a-gltf-model rotation="0 -60 0 " position="0 -0.40 0" scale="0.035 0.035 0.035" src="#maxwellModel" 
+          <a-gltf-model rotation="0 -60 0 " position="0 -0.40 0" scale="0.035 0.035 0.035" src="#maxwellAsset" id="maxwellModel" 
             animation__spin="property: rotation; to: 25 -60 0; from: -25 -80 0; dur: 700; easing: easeInOutQuad; loop: true; dir: alternate" >
           </a-gltf-model>
       </a-entity>  
@@ -81,6 +83,6 @@
 </html>
 
 <!-- Si sale esto es que ya se actualizo ¯\_(ツ)_/¯ -->
-<!-- # de veces actualizado: 40 -->
+<!-- # de veces actualizado: 41 -->
 
 <!-- Abner-Sama! <3/ -->
