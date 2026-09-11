@@ -14,7 +14,7 @@
     </div>
 
     <!-- AR STUFF -->
-    <a-scene mindar-image="imageTargetSrc: ./Oiiaii.mind; maxTrack: 2" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <a-scene mindar-image="imageTargetSrc: ./Oiiaii.mind; autoStart: false; maxTrack: 2" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" >
       <a-assets>
         <a-asset-item id="oiioiiModel" src="./Oiiiaii_Cat.gltf"></a-asset-item>
         <a-asset-item id="maxwellModel" src="./Maxwell.gltf"></a-asset-item>
@@ -42,15 +42,21 @@
       document.addEventListener("DOMContentLoaded", function() {
 	    const sceneEl = document.querySelector('a-scene');
 	    let arSystem;
-	    sceneEl.addEventListener('loaded', function () {
+	  sceneEl.addEventListener('loaded', function () {
 	    arSystem = sceneEl.systems["mindar-image-system"];
       });
+		  
+	  const startButton = document.querySelector("#start-button");
+
+	  startButton.addEventListener('click', () => {
+	      arSystem.start(); 
+	  });
     </script>
     
   </body>
 </html>
 
 <!-- Si sale esto es que ya se actualizo ¯\_(ツ)_/¯ -->
-<!-- # de veces actualizado: 22 -->
+<!-- # de veces actualizado: 23 -->
 
 <!-- Abner-Sama! <3/ -->
