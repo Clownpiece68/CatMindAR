@@ -5,7 +5,25 @@
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.0.0/dist/aframe-extras.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+
+	      <!-- JAVA SHIT -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+	    const sceneEl = document.querySelector('a-scene');
+	    let arSystem;
+	  sceneEl.addEventListener('loaded', function () {
+	    arSystem = sceneEl.systems["mindar-image-system"];
+      });
+		  
+	  const startButton = document.querySelector("#start-button");
+
+	  startButton.addEventListener('click', () => {
+	      arSystem.start(); 
+	  });
+    </script>
   </head>
+
+	
   <body>
 
     <!-- UI -->
@@ -36,27 +54,10 @@
       </a-entity>  
     </a-scene>
 
-
-    <!-- JAVA SHIT -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-	    const sceneEl = document.querySelector('a-scene');
-	    let arSystem;
-	  sceneEl.addEventListener('loaded', function () {
-	    arSystem = sceneEl.systems["mindar-image-system"];
-      });
-		  
-	  const startButton = document.querySelector("#start-button");
-
-	  startButton.addEventListener('click', () => {
-	      arSystem.start(); 
-	  });
-    </script>
-    
   </body>
 </html>
 
 <!-- Si sale esto es que ya se actualizo ¯\_(ツ)_/¯ -->
-<!-- # de veces actualizado: 23 -->
+<!-- # de veces actualizado: 24 -->
 
 <!-- Abner-Sama! <3/ -->
