@@ -7,6 +7,13 @@
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
   </head>
   <body>
+
+    <!-- UI -->
+    <div style="position: absolute; z-index: 1000">
+        <button id="start-button">Start</button>
+    </div>
+
+    <!-- AR STUFF -->
     <a-scene mindar-image="imageTargetSrc: ./Oiiaii.mind; maxTrack: 2" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
         <a-asset-item id="oiioiiModel" src="./Oiiiaii_Cat.gltf"></a-asset-item>
@@ -26,13 +33,24 @@
           <a-gltf-model rotation="0 -60 0 " position="0 -0.40 0" scale="0.035 0.035 0.035" src="#maxwellModel" 
             animation__spin="property: rotation; to: 25 -60 0; from: -25 -80 0; dur: 700; easing: easeInOutQuad; loop: true; dir: alternate" >
           </a-gltf-model>
-      </a-entity>
-      
+      </a-entity>  
     </a-scene>
+
+
+    <!-- JAVA SHIT -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+	    const sceneEl = document.querySelector('a-scene');
+	    let arSystem;
+	    sceneEl.addEventListener('loaded', function () {
+	    arSystem = sceneEl.systems["mindar-image-system"];
+      });
+    </script>
+    
   </body>
 </html>
 
 <!-- Si sale esto es que ya se actualizo ¯\_(ツ)_/¯ -->
-<!-- # de veces actualizado: 21 -->
+<!-- # de veces actualizado: 22 -->
 
 <!-- Abner-Sama! <3/ -->
